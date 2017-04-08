@@ -93,6 +93,7 @@ func SetTitle()
 	if &filetype == 'c'
 		call append(line(".")+6, "#include<stdio.h>")
 		call append(line(".")+7, "")
+		call append(line(".")+8, "")
 	endif
 	"	if &filetype == 'java'
 	"		call append(line(".")+6,"public class ".expand("%"))
