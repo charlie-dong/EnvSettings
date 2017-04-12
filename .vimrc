@@ -1,5 +1,22 @@
 "Tutorials for configure vim
 "http://linux-wiki.cn/wiki/%E7%94%A8Vim%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8A%80%E5%B7%A7
+
+"去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
+set nocompatible " 必须
+
+filetype off     " 必须
+
+" 将Vundle加入运行时路径中(Runtime path)
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" 使用Vundle管理插件，必须
+Plugin 'gmarik/Vundle.vim'
+" 其他插件
+" ...
+Bundle 'kchmck/vim-coffee-script'
+call vundle#end() " 必须
+filetype plugin indent on " 必须
+
 map <F9> :call SaveInputData()<CR>
 func! SaveInputData()
 	exec "tabnew"
@@ -7,17 +24,12 @@ func! SaveInputData()
 	exec "w! /tmp/input_data"
 endfunc
 
-
-
-
 "colorscheme torte
 "colorscheme murphy
 "colorscheme desert 
 "colorscheme desert 
 "colorscheme elflord
 colorscheme ron
-
-
 
 
 "set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
@@ -49,7 +61,6 @@ set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)
 set foldenable      " 允许折叠  
 set foldmethod=manual   " 手动折叠  
 "set background=dark "背景使用黑色 
-set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 " 显示中文帮助
 if version >= 603
 	set helplang=cn
@@ -189,8 +200,6 @@ set foldcolumn=0
 set foldmethod=indent 
 set foldlevel=3 
 set foldenable              " 开始折叠
-" 不要使用vi的键盘模式，而是vim自己的
-set nocompatible
 " 语法高亮
 set syntax=on
 " 去掉输入错误的提示声音
@@ -292,3 +301,5 @@ filetype plugin indent on
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:molokai_original = 1
+let g:rehash256 = 1
