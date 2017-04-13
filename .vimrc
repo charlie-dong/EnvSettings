@@ -31,17 +31,10 @@ endfunc
 "colorscheme elflord
 colorscheme ron
 
-
-"set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-"set termencoding=utf-8
-"set encoding=utf-8
-"set fileencodings=ucs-bom,utf-8,cp936
-"set fileencoding=utf-8
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
+set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 "winpos 5 5          " 设定窗口位置  
 "set lines=40 columns=155    " 设定窗口大小  
 set go=             " 不要图形按钮  
@@ -66,14 +59,7 @@ if version >= 603
 	set helplang=cn
 	set encoding=utf-8
 endif
-" 设置配色方案
-"colorscheme murphy
-"字体 
-"if (has("gui_running")) 
-"   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 
-"endif 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""新文件标题
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "新建.c,.h,.sh,.java文件，自动插入文件头 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
@@ -116,18 +102,12 @@ func SetTitle()
 	autocmd BufNewFile * normal G
 endfunc 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nmap <leader>w :w!<cr>
-nmap <leader>f :find<cr>
-
 " 映射全选+复制 ctrl+a
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
-map <F12> gg=G
-" 选中状态下 Ctrl+c 复制
-vmap <C-c> "+y
 "去空行  
 nnoremap <F2> :g/^\s*$/d<CR> 
 "比较文件  
@@ -167,7 +147,6 @@ func! Rungdb()
 	exec "!g++ % -g -o %<"
 	exec "!gdb ./%<"
 endfunc
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,12 +205,12 @@ set history=1000
 set nobackup
 set noswapfile
 "搜索忽略大小写
-set ignorecase
+"set ignorecase
 "搜索逐字符高亮
 set hlsearch
 set incsearch
 "行内替换
-set gdefault
+"set gdefault
 "编码设置
 set enc=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
