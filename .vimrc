@@ -1,5 +1,7 @@
 "Tutorials for configure vim
 "http://linux-wiki.cn/wiki/%E7%94%A8Vim%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8A%80%E5%B7%A7
+"http://blog.163.com/023_dns/blog/static/1187273662012125112426472/
+"www.alexeyshmalko.com/2014/using-vim-as-c-cpp-ide/
 map <F9> :call SaveInputData()<CR>
 func! SaveInputData()
 	exec "tabnew"
@@ -117,8 +119,6 @@ map! <C-A> <Esc>ggVGY
 map <F12> gg=G
 " 选中状态下 Ctrl+c 复制
 vmap <C-c> "+y
-"去空行  
-nnoremap <F2> :g/^\s*$/d<CR> 
 "比较文件  
 nnoremap <C-F2> :vert diffsplit 
 "新建标签  
@@ -130,7 +130,7 @@ map <C-F3> \be
 "Add F4 to toggle on/off show number
 nnoremap <F4> :set nonumber!<CR>:set foldcolumn=0<CR>
 "C，C++ 按F5编译运行
-map <F5> :call CompileRunGcc()<CR>
+map <F6> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'
@@ -292,3 +292,44 @@ filetype plugin indent on
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"-- Ctags settings
+map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+map <F5> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+set tags=tags
+set tags+=./tags
+set tags+=~/workspace/EkipEHub/tags
+set tags+=~/workspace/linux-4.4.0/tags
+
+"-- OmniCpp settings
+set completeopt=menu,menuone " 关掉智能补全时的预览窗口
+let OmniCpp_MayCompleteDot = 1 " autocomplete with .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
+let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
+let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window
+let OmniCpp_GlobalScopeSearch=1 " enable the global scope search
+let OmniCpp_DisplayMode=1 " Class scope completion mode: always show all members
+"let OmniCpp_DefaultNamespaces=["std"]
+let OmniCpp_ShowScopeInAbbr=1 " show scope in abbreviation and remove the last column
+let OmniCpp_ShowAccess=1 
+
+"-- Taglist setting --
+let Tlist_Ctags_Cmd='ctags' "因为我们放在环境变量里，所以可以直接执行
+let Tlist_Use_Right_Window=1 "让窗口显示在右边，0的话就是显示在左边
+let Tlist_Show_One_File=0 "让taglist可以同时展示多个文件的函数列表
+let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏
+let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动推出vim
+let Tlist_Process_File_Always=1 "实时更新tags
+let Tlist_Inc_Winwidth=0
+
+"-- WinManager setting --
+let g:winnManagerWindowLayout='FileExplorer|TagList' " 设置我们要管理的插件
+let g:persistentBehaviour=0 " 如果所有编辑文件都关闭了，退出vim
+nmap wm :WMToggle<cr> 
+
+"-- MiniBufferExplorer --
+let g:miniBufferExplMapWindownavVim = 1
+let g:miniBufferExplMapWindownavVim = 1
+let g:miniBufferExplMapWindownavVim = 1
