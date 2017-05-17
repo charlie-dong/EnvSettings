@@ -252,6 +252,7 @@ set tags=tags
 set tags+=./tags
 set tags+=~/workspace/EkipEHub/tags
 set tags+=~/workspace/linux-4.4.0/tags
+set tags+=~/workspace/mbedtls-2.2.1/tags
 
 "-- OmniCpp settings
 set completeopt=menu,menuone " 关掉智能补全时的预览窗口
